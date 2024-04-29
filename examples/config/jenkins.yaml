@@ -1,0 +1,30 @@
+jenkins:
+  systemMessage: "This is a demo Jenkins instance configured with Jenkins Configuration as Code."
+  disabledAdministrativeMonitors:
+    - "jenkins.diagnostics.ControllerExecutorsNoAgents"
+  securityRealm:
+    local:
+      allowsSignup: false
+      enableCaptcha: false
+      users:
+      - id: ${JENKINS_ADMIN_USERNAME}
+        password: ${JENKINS_ADMIN_PASSWORD}
+        name: ${JENKINS_ADMIN_NAME}
+        properties:
+        - "apiToken"
+        - "consoleUrlProvider"
+        - "myView"
+        - preferredProvider:
+            providerId: "default"
+        - "theme"
+        - "timezone"
+        - "experimentalFlags"
+        - mailer:
+            emailAddress: ${JENKINS_ADMIN_EMAIL}
+unclassified:
+  location:
+    adminAddress: ${JENKINS_ADMIN_EMAIL}
+    url: ${JENKINS_URL}
+  locale:
+    ignoreAcceptLanguage: true
+    systemLocale: ${JENKINS_LOCALE}
