@@ -21,6 +21,12 @@ jenkins:
         - "experimentalFlags"
         - mailer:
             emailAddress: ${JENKINS_ADMIN_EMAIL}
+security:
+  globalJobDslSecurityConfiguration:
+    useScriptSecurity: true
+  scriptApproval:
+    approvedScriptHashes:
+    - "SHA512:fa7ef3a8989433b2695771a3363c1c03547c0b8669847a41609af6df19c4e8ef75ab65038492aeb335719dbd5ff6bf6a3dc398153f7d96c6705bcc9b0494eea1"
 unclassified:
   location:
     adminAddress: ${JENKINS_ADMIN_EMAIL}
@@ -28,3 +34,24 @@ unclassified:
   locale:
     ignoreAcceptLanguage: true
     systemLocale: ${JENKINS_LOCALE}
+jobs:
+  - script: >
+      folder('testjobs')
+  - script: >
+      pipelineJob('testjobs/hello-world') {
+        definition {
+          cps {
+            script("""\
+              pipeline {
+                agent any
+                stages {
+                  stage ('test') {
+                    steps {
+                      echo "Hello World!"
+                    }
+                  }
+                }
+              }""".stripIndent())
+          }
+        }
+      }
