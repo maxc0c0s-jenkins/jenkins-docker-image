@@ -1,9 +1,10 @@
 ant:497.v94e7d9fffa_b_9
+azure-vm-agents:921.v76424a_e24594
 build-timeout:1.32
 configuration-as-code:1775.v810dc950b_514
 dark-theme:439.vdef09f81f85e
 email-ext:1806.v856a_01a_fa_39a_
-github-branch-source:1787.v8b_8cd49a_f8f1
+github-branch-source:1789.v5b_0c0cea_18c3
 gradle:2.11
 javax-mail-api:1.6.2-9
 job-dsl:1.87
